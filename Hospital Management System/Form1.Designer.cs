@@ -29,52 +29,38 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.cmbGender = new System.Windows.Forms.ComboBox();
             this.txtAge = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.FullName = new System.Windows.Forms.Label();
             this.Age = new System.Windows.Forms.Label();
             this.txtCondition = new System.Windows.Forms.TextBox();
             this.txtContact = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.Label();
             this.Gender = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.dgvPatients = new System.Windows.Forms.DataGridView();
+            this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1 = new Hospital_Management_System.DataSet1();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnPatients = new System.Windows.Forms.Button();
-            this.btnDoctors = new System.Windows.Forms.Button();
             this.btnAppointments = new System.Windows.Forms.Button();
-            this.dataSet1 = new Hospital_Management_System.DataSet1();
-            this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.flowLayoutPanel1.SuspendLayout();
+            this.btnDoctors = new System.Windows.Forms.Button();
+            this.btnPatients = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtSearchbar2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
-            this.flowLayoutPanel1.Controls.Add(this.textBox4);
-            this.flowLayoutPanel1.Controls.Add(this.label3);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1186, 77);
-            this.flowLayoutPanel1.TabIndex = 10;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // cmbGender
             // 
@@ -102,18 +88,7 @@
             this.txtAge.Name = "txtAge";
             this.txtAge.Size = new System.Drawing.Size(300, 35);
             this.txtAge.TabIndex = 3;
-            this.txtAge.Text = "00";
             this.txtAge.TextChanged += new System.EventHandler(this.txtAge_TextChanged);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(289, 672);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 10);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -158,7 +133,6 @@
             this.txtCondition.Name = "txtCondition";
             this.txtCondition.Size = new System.Drawing.Size(645, 150);
             this.txtCondition.TabIndex = 6;
-            this.txtCondition.Text = "Brief description of symptoms or diagnosis... ";
             this.txtCondition.TextChanged += new System.EventHandler(this.txtCondition_TextChanged);
             // 
             // txtContact
@@ -168,27 +142,11 @@
             this.txtContact.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.txtContact.Location = new System.Drawing.Point(31, 330);
             this.txtContact.MaximumSize = new System.Drawing.Size(647, 50);
-            this.txtContact.MinimumSize = new System.Drawing.Size(410, 35);
+            this.txtContact.MinimumSize = new System.Drawing.Size(410, 40);
             this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(645, 35);
+            this.txtContact.Size = new System.Drawing.Size(645, 40);
             this.txtContact.TabIndex = 5;
-            this.txtContact.Text = "+383 000 000 000";
             this.txtContact.TextChanged += new System.EventHandler(this.txtContact_TextChanged);
-            // 
-            // txtName
-            // 
-            this.txtName.AccessibleName = "Patient Name";
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
-            this.txtName.Location = new System.Drawing.Point(31, 141);
-            this.txtName.MaximumSize = new System.Drawing.Size(800, 250);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(649, 35);
-            this.txtName.TabIndex = 0;
-            this.txtName.Text = "e.g John Smith";
-            this.txtName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.txtName.Click += new System.EventHandler(this.label1_Click);
             // 
             // Gender
             // 
@@ -215,15 +173,14 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtName);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.FullName);
             this.panel1.Controls.Add(this.Gender);
             this.panel1.Controls.Add(this.Age);
-            this.panel1.Controls.Add(this.txtName);
             this.panel1.Controls.Add(this.txtAge);
             this.panel1.Controls.Add(this.txtCondition);
             this.panel1.Controls.Add(this.txtContact);
@@ -231,49 +188,21 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(398, 132);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(707, 731);
+            this.panel1.Size = new System.Drawing.Size(707, 747);
             this.panel1.TabIndex = 12;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // label2
+            // txtName
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.label2.Location = new System.Drawing.Point(114, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(351, 32);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "New Patient Registration";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.label3.Location = new System.Drawing.Point(293, 15);
-            this.label3.Margin = new System.Windows.Forms.Padding(3, 15, 170, 100);
-            this.label3.MaximumSize = new System.Drawing.Size(500, 120);
-            this.label3.MinimumSize = new System.Drawing.Size(400, 40);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(400, 40);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Patient Management";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // textBox4
-            // 
-            this.textBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.textBox4.Location = new System.Drawing.Point(866, 15);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(3, 15, 70, 3);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(250, 28);
-            this.textBox4.TabIndex = 13;
-            this.textBox4.Text = "Search records...";
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
+            this.txtName.Location = new System.Drawing.Point(31, 142);
+            this.txtName.MaximumSize = new System.Drawing.Size(0, 40);
+            this.txtName.MinimumSize = new System.Drawing.Size(0, 40);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(645, 40);
+            this.txtName.TabIndex = 14;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // label4
             // 
@@ -281,10 +210,22 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(31, 392);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(168, 25);
+            this.label4.Size = new System.Drawing.Size(133, 25);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Medical Condition";
+            this.label4.Text = "Specialization";
             this.label4.Click += new System.EventHandler(this.label4_Click_1);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.label2.Location = new System.Drawing.Point(109, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(351, 32);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "New Patient Registration";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dgvPatients
             // 
@@ -298,7 +239,7 @@
             this.dgvPatients.DataSource = this.dataSet1BindingSource;
             this.dgvPatients.EnableHeadersVisualStyles = false;
             this.dgvPatients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
-            this.dgvPatients.Location = new System.Drawing.Point(316, 907);
+            this.dgvPatients.Location = new System.Drawing.Point(330, 924);
             this.dgvPatients.Name = "dgvPatients";
             this.dgvPatients.RowHeadersVisible = false;
             this.dgvPatients.RowHeadersWidth = 51;
@@ -307,6 +248,16 @@
             this.dgvPatients.Size = new System.Drawing.Size(858, 444);
             this.dgvPatients.TabIndex = 14;
             this.dgvPatients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatients_CellContentClick);
+            // 
+            // dataSet1BindingSource
+            // 
+            this.dataSet1BindingSource.DataSource = this.dataSet1;
+            this.dataSet1BindingSource.Position = 0;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label5
             // 
@@ -318,6 +269,7 @@
             this.label5.Size = new System.Drawing.Size(143, 36);
             this.label5.TabIndex = 0;
             this.label5.Text = "MediCare";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -329,6 +281,7 @@
             this.label6.Size = new System.Drawing.Size(74, 36);
             this.label6.TabIndex = 1;
             this.label6.Text = "Plus";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // panel2
             // 
@@ -341,9 +294,35 @@
             this.panel2.ForeColor = System.Drawing.Color.Coral;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(283, 1313);
+            this.panel2.Size = new System.Drawing.Size(283, 1368);
             this.panel2.TabIndex = 13;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint_1);
+            // 
+            // btnAppointments
+            // 
+            this.btnAppointments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.btnAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAppointments.ForeColor = System.Drawing.Color.White;
+            this.btnAppointments.Location = new System.Drawing.Point(26, 250);
+            this.btnAppointments.Name = "btnAppointments";
+            this.btnAppointments.Size = new System.Drawing.Size(231, 55);
+            this.btnAppointments.TabIndex = 4;
+            this.btnAppointments.Text = "Appointments";
+            this.btnAppointments.UseVisualStyleBackColor = false;
+            this.btnAppointments.Click += new System.EventHandler(this.BtnAppointments_Click);
+            // 
+            // btnDoctors
+            // 
+            this.btnDoctors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.btnDoctors.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDoctors.ForeColor = System.Drawing.Color.White;
+            this.btnDoctors.Location = new System.Drawing.Point(26, 162);
+            this.btnDoctors.Name = "btnDoctors";
+            this.btnDoctors.Size = new System.Drawing.Size(231, 55);
+            this.btnDoctors.TabIndex = 3;
+            this.btnDoctors.Text = "Doctors";
+            this.btnDoctors.UseVisualStyleBackColor = false;
+            this.btnDoctors.Click += new System.EventHandler(this.BtnDoctors_Click);
             // 
             // btnPatients
             // 
@@ -357,89 +336,84 @@
             this.btnPatients.TabIndex = 2;
             this.btnPatients.Text = "Patients";
             this.btnPatients.UseVisualStyleBackColor = false;
+            this.btnPatients.Click += new System.EventHandler(this.btnPatients_Click);
             // 
-            // btnDoctors
+            // panel3
             // 
-            this.btnDoctors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.btnDoctors.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDoctors.ForeColor = System.Drawing.Color.White;
-            this.btnDoctors.Location = new System.Drawing.Point(26, 162);
-            this.btnDoctors.Name = "btnDoctors";
-            this.btnDoctors.Size = new System.Drawing.Size(231, 55);
-            this.btnDoctors.TabIndex = 3;
-            this.btnDoctors.Text = "Doctors";
-            this.btnDoctors.UseVisualStyleBackColor = false;
+            this.panel3.Controls.Add(this.txtSearchbar2);
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1217, 97);
+            this.panel3.TabIndex = 16;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
-            // btnAppointments
+            // txtSearchbar2
             // 
-            this.btnAppointments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
-            this.btnAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAppointments.ForeColor = System.Drawing.Color.White;
-            this.btnAppointments.Location = new System.Drawing.Point(26, 250);
-            this.btnAppointments.Name = "btnAppointments";
-            this.btnAppointments.Size = new System.Drawing.Size(231, 55);
-            this.btnAppointments.TabIndex = 4;
-            this.btnAppointments.Text = "Appointments";
-            this.btnAppointments.UseVisualStyleBackColor = false;
+            this.txtSearchbar2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchbar2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
+            this.txtSearchbar2.Location = new System.Drawing.Point(931, 29);
+            this.txtSearchbar2.Name = "txtSearchbar2";
+            this.txtSearchbar2.Size = new System.Drawing.Size(174, 30);
+            this.txtSearchbar2.TabIndex = 1;
+            this.txtSearchbar2.TextChanged += new System.EventHandler(this.txtSearchbar2_TextChanged);
             // 
-            // dataSet1
+            // label3
             // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // dataSet1BindingSource
-            // 
-            this.dataSet1BindingSource.DataSource = this.dataSet1;
-            this.dataSet1BindingSource.Position = 0;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.label3.Location = new System.Drawing.Point(309, 21);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(333, 38);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Patients Management";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.AutoScrollMargin = new System.Drawing.Size(10, 10);
             this.AutoScrollMinSize = new System.Drawing.Size(0, 1000);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(1207, 1055);
+            this.ClientSize = new System.Drawing.Size(1224, 1055);
             this.Controls.Add(this.dgvPatients);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximumSize = new System.Drawing.Size(2000, 2500);
             this.MinimumSize = new System.Drawing.Size(0, 1018);
             this.Name = "Form1";
             this.Text = "  ";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.ComboBox cmbGender;
         private System.Windows.Forms.TextBox txtAge;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label FullName;
         private System.Windows.Forms.Label Age;
         private System.Windows.Forms.TextBox txtCondition;
         private System.Windows.Forms.TextBox txtContact;
-        private System.Windows.Forms.Label txtName;
         private System.Windows.Forms.Label Gender;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dgvPatients;
         private System.Windows.Forms.Label label6;
@@ -450,6 +424,10 @@
         private System.Windows.Forms.Button btnPatients;
         private System.Windows.Forms.BindingSource dataSet1BindingSource;
         private DataSet1 dataSet1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.TextBox txtSearchbar2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtName;
     }
 }
 
