@@ -43,6 +43,7 @@ namespace Hospital_Management_System
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@ namespace Hospital_Management_System
             this.dgvPatients = new System.Windows.Forms.DataGridView();
             this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet1 = new Hospital_Management_System.DataSet1();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -124,6 +124,7 @@ namespace Hospital_Management_System
             // 
             // btnPatients
             // 
+            this.btnPatients.AccessibleName = "BtnPatients";
             this.btnPatients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.btnPatients.FlatAppearance.BorderSize = 0;
             this.btnPatients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -196,6 +197,17 @@ namespace Hospital_Management_System
             this.panel1.Size = new System.Drawing.Size(707, 741);
             this.panel1.TabIndex = 17;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(31, 433);
+            this.textBox1.MaximumSize = new System.Drawing.Size(645, 250);
+            this.textBox1.MinimumSize = new System.Drawing.Size(645, 150);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(645, 150);
+            this.textBox1.TabIndex = 15;
             // 
             // txtName
             // 
@@ -338,7 +350,7 @@ namespace Hospital_Management_System
             this.dgvPatients.DataSource = this.dataSet1BindingSource;
             this.dgvPatients.EnableHeadersVisualStyles = false;
             this.dgvPatients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
-            this.dgvPatients.Location = new System.Drawing.Point(305, 923);
+            this.dgvPatients.Location = new System.Drawing.Point(320, 923);
             this.dgvPatients.Name = "dgvPatients";
             this.dgvPatients.RowHeadersVisible = false;
             this.dgvPatients.RowHeadersWidth = 51;
@@ -356,17 +368,6 @@ namespace Hospital_Management_System
             // 
             this.dataSet1.DataSetName = "DataSet1";
             this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(31, 433);
-            this.textBox1.MaximumSize = new System.Drawing.Size(645, 250);
-            this.textBox1.MinimumSize = new System.Drawing.Size(645, 150);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(645, 150);
-            this.textBox1.TabIndex = 15;
             // 
             // DoctorsControl
             // 

@@ -35,6 +35,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtCondition = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,10 +52,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtSearchbar2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtCondition = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -154,6 +154,49 @@
             this.panel1.Size = new System.Drawing.Size(707, 747);
             this.panel1.TabIndex = 17;
             // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
+            this.textBox1.Location = new System.Drawing.Point(31, 224);
+            this.textBox1.MaximumSize = new System.Drawing.Size(2, 40);
+            this.textBox1.MinimumSize = new System.Drawing.Size(2, 40);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(2, 30);
+            this.textBox1.TabIndex = 18;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(26, 196);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(126, 25);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Doctor Name";
+            // 
+            // txtName
+            // 
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
+            this.txtName.Location = new System.Drawing.Point(31, 132);
+            this.txtName.MaximumSize = new System.Drawing.Size(2, 40);
+            this.txtName.MinimumSize = new System.Drawing.Size(2, 40);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(2, 40);
+            this.txtName.TabIndex = 16;
+            // 
+            // txtCondition
+            // 
+            this.txtCondition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCondition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCondition.Location = new System.Drawing.Point(24, 525);
+            this.txtCondition.MaximumSize = new System.Drawing.Size(645, 250);
+            this.txtCondition.MinimumSize = new System.Drawing.Size(645, 150);
+            this.txtCondition.Name = "txtCondition";
+            this.txtCondition.Size = new System.Drawing.Size(645, 27);
+            this.txtCondition.TabIndex = 15;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -234,7 +277,7 @@
             this.txtAge.MaxLength = 2;
             this.txtAge.MinimumSize = new System.Drawing.Size(250, 35);
             this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(300, 35);
+            this.txtAge.Size = new System.Drawing.Size(300, 30);
             this.txtAge.TabIndex = 3;
             // 
             // txtContact
@@ -246,7 +289,7 @@
             this.txtContact.MaximumSize = new System.Drawing.Size(647, 50);
             this.txtContact.MinimumSize = new System.Drawing.Size(410, 40);
             this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(645, 40);
+            this.txtContact.Size = new System.Drawing.Size(645, 27);
             this.txtContact.TabIndex = 5;
             // 
             // cmbGender
@@ -292,55 +335,13 @@
             this.label3.Text = "Appointments Management";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // txtCondition
-            // 
-            this.txtCondition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCondition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCondition.Location = new System.Drawing.Point(24, 525);
-            this.txtCondition.MaximumSize = new System.Drawing.Size(645, 250);
-            this.txtCondition.MinimumSize = new System.Drawing.Size(645, 150);
-            this.txtCondition.Name = "txtCondition";
-            this.txtCondition.Size = new System.Drawing.Size(645, 150);
-            this.txtCondition.TabIndex = 15;
-            // 
-            // txtName
-            // 
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
-            this.txtName.Location = new System.Drawing.Point(31, 132);
-            this.txtName.MaximumSize = new System.Drawing.Size(0, 40);
-            this.txtName.MinimumSize = new System.Drawing.Size(0, 40);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(645, 40);
-            this.txtName.TabIndex = 16;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(26, 196);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(126, 25);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Doctor Name";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
-            this.textBox1.Location = new System.Drawing.Point(31, 224);
-            this.textBox1.MaximumSize = new System.Drawing.Size(0, 40);
-            this.textBox1.MinimumSize = new System.Drawing.Size(0, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(645, 40);
-            this.textBox1.TabIndex = 18;
-            // 
             // AppointmentsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(1224, 1055);
+            this.ClientSize = new System.Drawing.Size(1235, 1055);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
