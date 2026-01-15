@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Hospital_Management_System
@@ -76,6 +77,38 @@ namespace Hospital_Management_System
         // ---------- Patient saving ----------
         private void button1_Click(object sender, EventArgs e)
         {
+            // 🔴 INPUT VALIDATION — GOES HERE (TOP)
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                MessageBox.Show("Full Name is required.");
+                return;
+            }
+
+            if (!int.TryParse(txtAge.Text, out int age) || age <= 0)
+            {
+                MessageBox.Show("Please enter a valid age.");
+                return;
+            }
+
+            if (cmbGender.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select a gender.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtContact.Text) || !txtContact.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Please enter a valid contact number.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtCondition.Text))
+            {
+                MessageBox.Show("Condition is required.");
+                return;
+            }
+
+
             try
             {
                 string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
@@ -94,6 +127,8 @@ namespace Hospital_Management_System
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Patient Saved Successfully!");
+                    LoadPatients();
+
                 }
             }
             catch (Exception ex)
@@ -113,11 +148,13 @@ namespace Hospital_Management_System
                     connection.Open();
                     MessageBox.Show("Connection to SQL Server successful!");
                 }
+                LoadPatients();
             }
             catch (SqlException ex)
             {
                 MessageBox.Show("Connection Failed: " + ex.Message);
             }
+            
         }
 
         private void panel2_Paint_1(object sender, PaintEventArgs e)
@@ -180,12 +217,166 @@ namespace Hospital_Management_System
 
         private void txtSearchbar2_TextChanged(object sender, EventArgs e)
         {
+            string searchText = txtSearchbar2.Text.Trim();
 
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                LoadPatients(); // show all patients again
+            }
+            else
+            {
+                LoadPatientsFiltered(searchText); // filter
+            }
         }
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
 
         }
+        private void LoadPatients()
+        {
+            try
+            {
+                dgvPatients.DataSource = null;
+                dgvPatients.Rows.Clear();
+                dgvPatients.Columns.Clear();
+
+                string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    string query = "SELECT Name, Age, Gender, Contact, Condition FROM Patients";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    // Define columns
+                    dgvPatients.Columns.Add("Name", "Full Name");
+                    dgvPatients.Columns.Add("Age", "Age");
+                    dgvPatients.Columns.Add("Gender", "Gender");
+                    dgvPatients.Columns.Add("Contact", "Contact Number");
+                    dgvPatients.Columns.Add("Condition", "Condition");
+
+                    while (reader.Read())
+                    {
+                        dgvPatients.Rows.Add(
+                            reader["Name"].ToString(),
+                            reader["Age"].ToString(),
+                            reader["Gender"].ToString(),
+                            reader["Contact"].ToString(),
+                            reader["Condition"].ToString()
+                        );
+                    }
+
+                    dgvPatients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load patients: " + ex.Message);
+            }
+        }
+
+        private void LoadPatientsFiltered(string searchText)
+        {
+            try
+            {
+                dgvPatients.DataSource = null;
+                dgvPatients.Rows.Clear();
+                dgvPatients.Columns.Clear();
+
+                string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    string query = @"
+                SELECT Name, Age, Gender, Contact, Condition
+                FROM Patients
+                WHERE 
+                    Name LIKE @search OR
+                    Gender LIKE @search OR
+                    Contact LIKE @search OR
+                    Condition LIKE @search
+            ";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@search", "%" + searchText + "%");
+
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    // Columns
+                    dgvPatients.Columns.Add("Name", "Full Name");
+                    dgvPatients.Columns.Add("Age", "Age");
+                    dgvPatients.Columns.Add("Gender", "Gender");
+                    dgvPatients.Columns.Add("Contact", "Contact Number");
+                    dgvPatients.Columns.Add("Condition", "Condition");
+
+                    while (reader.Read())
+                    {
+                        dgvPatients.Rows.Add(
+                            reader["Name"].ToString(),
+                            reader["Age"].ToString(),
+                            reader["Gender"].ToString(),
+                            reader["Contact"].ToString(),
+                            reader["Condition"].ToString()
+                        );
+                    }
+
+                    dgvPatients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Search failed: " + ex.Message);
+            }
+        }
+            
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            if (dgvPatients.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a patient to delete.");
+                return;
+            }
+
+            // Get contact number from selected row
+            string contact = dgvPatients.SelectedRows[0].Cells["Contact"].Value.ToString();
+
+            DialogResult confirm = MessageBox.Show(
+                "Are you sure you want to delete this patient?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm != DialogResult.Yes)
+                return;
+
+            try
+            {
+                string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    string query = "DELETE FROM Patients WHERE Contact = @Contact";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Contact", contact);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Patient deleted successfully.");
+                LoadPatients(); // refresh grid
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Delete failed: " + ex.Message);
+            }
+        }
     }
-}
+
+    }

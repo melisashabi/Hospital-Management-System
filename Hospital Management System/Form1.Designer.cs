@@ -54,6 +54,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtSearchbar2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
@@ -173,6 +174,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.txtName);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
@@ -240,6 +242,7 @@
             this.dgvPatients.EnableHeadersVisualStyles = false;
             this.dgvPatients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
             this.dgvPatients.Location = new System.Drawing.Point(330, 924);
+            this.dgvPatients.MultiSelect = false;
             this.dgvPatients.Name = "dgvPatients";
             this.dgvPatients.RowHeadersVisible = false;
             this.dgvPatients.RowHeadersWidth = 51;
@@ -370,6 +373,17 @@
             this.label3.Text = "Patients Management";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDelete.Location = new System.Drawing.Point(31, 672);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(649, 59);
+            this.btnDelete.TabIndex = 15;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -384,7 +398,7 @@
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximumSize = new System.Drawing.Size(2000, 2500);
-            this.MinimumSize = new System.Drawing.Size(0, 1018);
+            this.MinimumSize = new System.Drawing.Size(0, 998);
             this.Name = "Form1";
             this.Text = "  ";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -428,6 +442,7 @@
         private System.Windows.Forms.TextBox txtSearchbar2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
 
