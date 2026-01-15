@@ -51,25 +51,24 @@ namespace Hospital_Management_System
         // ---------- Doctors button click ----------
         private void BtnDoctors_Click(object sender, EventArgs e)
         {
-            
-            DoctorsControl doctorsForm = new DoctorsControl();
-            doctorsForm.StartPosition = FormStartPosition.CenterScreen; 
-            doctorsForm.Size = new Size(1536, 864);                      
-            doctorsForm.Show();
-            
-            this.Hide();
+            Form doctorsWindow = new Form();
+            doctorsWindow.Text = "Doctors Management";
+            doctorsWindow.StartPosition = FormStartPosition.CenterScreen;
+            doctorsWindow.Size = new Size(1000, 700);
+
+            DoctorsControl doctorsControl = new DoctorsControl();
+            doctorsControl.Dock = DockStyle.Fill;
+
+            doctorsWindow.Controls.Add(doctorsControl);
+            doctorsWindow.Show();
 
         }
 
         private void BtnAppointments_Click(object sender, EventArgs e)
         {
 
-            AppointmentsControl AppointmentsForm = new AppointmentsControl();
-            AppointmentsForm.StartPosition = FormStartPosition.CenterScreen;
-            AppointmentsForm.Size = new Size(1536, 864);
-            AppointmentsForm.Show();
-
-            this.Hide();
+            AppointmentsControl appointments = new AppointmentsControl();
+            appointments.Show();
         }
 
 
@@ -207,7 +206,12 @@ namespace Hospital_Management_System
 
         private void btnPatients_Click(object sender, EventArgs e)
         {
+            // Reset layout safely
+            panel1.Visible = false;
+            panel1.Visible = true;
 
+            panel1.Dock = DockStyle.Fill;
+            panel1.BringToFront();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
