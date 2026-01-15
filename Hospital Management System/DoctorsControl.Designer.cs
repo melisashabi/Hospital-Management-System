@@ -43,7 +43,7 @@ namespace Hospital_Management_System
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCondition1 = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -83,7 +83,7 @@ namespace Hospital_Management_System
             this.txtSearchbar3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
             this.txtSearchbar3.Location = new System.Drawing.Point(931, 29);
             this.txtSearchbar3.Name = "txtSearchbar3";
-            this.txtSearchbar3.Size = new System.Drawing.Size(174, 30);
+            this.txtSearchbar3.Size = new System.Drawing.Size(174, 26);
             this.txtSearchbar3.TabIndex = 1;
             // 
             // label3
@@ -93,13 +93,14 @@ namespace Hospital_Management_System
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.label3.Location = new System.Drawing.Point(313, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(329, 38);
+            this.label3.Size = new System.Drawing.Size(273, 31);
             this.label3.TabIndex = 0;
             this.label3.Text = "Doctors Management";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // btnAppointments
             // 
+            this.btnAppointments.AccessibleName = "btnAppointments";
             this.btnAppointments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.btnAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAppointments.ForeColor = System.Drawing.Color.White;
@@ -109,9 +110,11 @@ namespace Hospital_Management_System
             this.btnAppointments.TabIndex = 4;
             this.btnAppointments.Text = "Appointments";
             this.btnAppointments.UseVisualStyleBackColor = false;
+            this.btnAppointments.Click += new System.EventHandler(this.BtnAppointments_Click);
             // 
             // btnDoctors
             // 
+            this.btnDoctors.AccessibleName = "btnDoctors";
             this.btnDoctors.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.btnDoctors.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDoctors.ForeColor = System.Drawing.Color.White;
@@ -124,7 +127,7 @@ namespace Hospital_Management_System
             // 
             // btnPatients
             // 
-            this.btnPatients.AccessibleName = "BtnPatients";
+            this.btnPatients.AccessibleName = "btnPatients";
             this.btnPatients.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.btnPatients.FlatAppearance.BorderSize = 0;
             this.btnPatients.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -135,6 +138,7 @@ namespace Hospital_Management_System
             this.btnPatients.TabIndex = 2;
             this.btnPatients.Text = "Patients";
             this.btnPatients.UseVisualStyleBackColor = false;
+            this.btnPatients.Click += new System.EventHandler(this.btnPatients_Click);
             // 
             // label6
             // 
@@ -143,7 +147,7 @@ namespace Hospital_Management_System
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
             this.label6.Location = new System.Drawing.Point(196, 21);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(74, 36);
+            this.label6.Size = new System.Drawing.Size(60, 29);
             this.label6.TabIndex = 1;
             this.label6.Text = "Plus";
             // 
@@ -170,7 +174,7 @@ namespace Hospital_Management_System
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(62, 21);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(143, 36);
+            this.label5.Size = new System.Drawing.Size(119, 29);
             this.label5.TabIndex = 0;
             this.label5.Text = "MediCare";
             // 
@@ -178,7 +182,7 @@ namespace Hospital_Management_System
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtCondition1);
             this.panel1.Controls.Add(this.txtName);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
@@ -198,16 +202,19 @@ namespace Hospital_Management_System
             this.panel1.TabIndex = 17;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // textBox1
+            // txtCondition1
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(31, 433);
-            this.textBox1.MaximumSize = new System.Drawing.Size(645, 250);
-            this.textBox1.MinimumSize = new System.Drawing.Size(645, 150);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(645, 150);
-            this.textBox1.TabIndex = 15;
+            this.txtCondition1.AccessibleName = "";
+            this.txtCondition1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCondition1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCondition1.Location = new System.Drawing.Point(31, 433);
+            this.txtCondition1.MaximumSize = new System.Drawing.Size(645, 250);
+            this.txtCondition1.MinimumSize = new System.Drawing.Size(645, 150);
+            this.txtCondition1.Name = "txtCondition1";
+            this.txtCondition1.Size = new System.Drawing.Size(645, 150);
+            this.txtCondition1.TabIndex = 15;
+            this.txtCondition1.Text = " ";
+            this.txtCondition1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtName
             // 
@@ -224,20 +231,20 @@ namespace Hospital_Management_System
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(31, 392);
+            this.label4.Location = new System.Drawing.Point(26, 391);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(168, 25);
+            this.label4.Size = new System.Drawing.Size(111, 20);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Medical Condition";
+            this.label4.Text = " Specialization";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
-            this.label2.Location = new System.Drawing.Point(108, 26);
+            this.label2.Location = new System.Drawing.Point(257, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(223, 32);
+            this.label2.Size = new System.Drawing.Size(177, 26);
             this.label2.TabIndex = 12;
             this.label2.Text = "Doctor Records";
             // 
@@ -247,7 +254,7 @@ namespace Hospital_Management_System
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(31, 287);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(154, 25);
+            this.label1.Size = new System.Drawing.Size(125, 20);
             this.label1.TabIndex = 11;
             this.label1.Text = "Contact Number";
             // 
@@ -267,7 +274,7 @@ namespace Hospital_Management_System
             this.FullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FullName.Location = new System.Drawing.Point(26, 100);
             this.FullName.Name = "FullName";
-            this.FullName.Size = new System.Drawing.Size(100, 25);
+            this.FullName.Size = new System.Drawing.Size(80, 20);
             this.FullName.TabIndex = 0;
             this.FullName.Text = "Full Name";
             // 
@@ -276,7 +283,7 @@ namespace Hospital_Management_System
             this.Gender.AutoSize = true;
             this.Gender.Location = new System.Drawing.Point(371, 195);
             this.Gender.Name = "Gender";
-            this.Gender.Size = new System.Drawing.Size(77, 25);
+            this.Gender.Size = new System.Drawing.Size(63, 20);
             this.Gender.TabIndex = 10;
             this.Gender.Text = "Gender";
             // 
@@ -286,7 +293,7 @@ namespace Hospital_Management_System
             this.Age.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Age.Location = new System.Drawing.Point(31, 195);
             this.Age.Name = "Age";
-            this.Age.Size = new System.Drawing.Size(48, 25);
+            this.Age.Size = new System.Drawing.Size(38, 20);
             this.Age.TabIndex = 9;
             this.Age.Text = "Age";
             // 
@@ -295,7 +302,7 @@ namespace Hospital_Management_System
             this.txtAge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
-            this.txtAge.Location = new System.Drawing.Point(31, 235);
+            this.txtAge.Location = new System.Drawing.Point(30, 235);
             this.txtAge.MaximumSize = new System.Drawing.Size(300, 100);
             this.txtAge.MaxLength = 2;
             this.txtAge.MinimumSize = new System.Drawing.Size(250, 35);
@@ -310,7 +317,7 @@ namespace Hospital_Management_System
             this.txtCondition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCondition.Location = new System.Drawing.Point(31, 433);
             this.txtCondition.Name = "txtCondition";
-            this.txtCondition.Size = new System.Drawing.Size(0, 27);
+            this.txtCondition.Size = new System.Drawing.Size(0, 23);
             this.txtCondition.TabIndex = 6;
             // 
             // txtContact
@@ -421,6 +428,6 @@ namespace Hospital_Management_System
         private System.Windows.Forms.DataGridView dgvPatients;
         private System.Windows.Forms.BindingSource dataSet1BindingSource;
         private DataSet1 dataSet1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCondition1;
     }
 }

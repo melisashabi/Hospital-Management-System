@@ -53,8 +53,11 @@ namespace Hospital_Management_System
             
             DoctorsControl doctorsForm = new DoctorsControl();
             doctorsForm.StartPosition = FormStartPosition.CenterScreen; 
-            doctorsForm.Size = new Size(600, 400);                      
-            doctorsForm.Show();                                         
+            doctorsForm.Size = new Size(1536, 864);                      
+            doctorsForm.Show();
+            
+            this.Hide();
+
         }
 
         private void BtnAppointments_Click(object sender, EventArgs e)
@@ -62,8 +65,10 @@ namespace Hospital_Management_System
 
             AppointmentsControl AppointmentsForm = new AppointmentsControl();
             AppointmentsForm.StartPosition = FormStartPosition.CenterScreen;
-            AppointmentsForm.Size = new Size(600, 400);
+            AppointmentsForm.Size = new Size(1536, 864);
             AppointmentsForm.Show();
+
+            this.Hide();
         }
 
 
