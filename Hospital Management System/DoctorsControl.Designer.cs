@@ -44,7 +44,6 @@ namespace Hospital_Management_System
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtCondition1 = new System.Windows.Forms.TextBox();
-            this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,14 +54,15 @@ namespace Hospital_Management_System
             this.txtAge = new System.Windows.Forms.TextBox();
             this.txtCondition = new System.Windows.Forms.TextBox();
             this.txtContact = new System.Windows.Forms.TextBox();
-            this.cmbGender = new System.Windows.Forms.ComboBox();
-            this.dgvPatients = new System.Windows.Forms.DataGridView();
+            this.comboBoxGender = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet1 = new Hospital_Management_System.DataSet1();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
@@ -83,7 +83,7 @@ namespace Hospital_Management_System
             this.txtSearchbar3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
             this.txtSearchbar3.Location = new System.Drawing.Point(931, 29);
             this.txtSearchbar3.Name = "txtSearchbar3";
-            this.txtSearchbar3.Size = new System.Drawing.Size(174, 26);
+            this.txtSearchbar3.Size = new System.Drawing.Size(174, 30);
             this.txtSearchbar3.TabIndex = 1;
             // 
             // label3
@@ -93,7 +93,7 @@ namespace Hospital_Management_System
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.label3.Location = new System.Drawing.Point(313, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(273, 31);
+            this.label3.Size = new System.Drawing.Size(329, 38);
             this.label3.TabIndex = 0;
             this.label3.Text = "Doctors Management";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -147,7 +147,7 @@ namespace Hospital_Management_System
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
             this.label6.Location = new System.Drawing.Point(196, 21);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 29);
+            this.label6.Size = new System.Drawing.Size(74, 36);
             this.label6.TabIndex = 1;
             this.label6.Text = "Plus";
             // 
@@ -174,7 +174,7 @@ namespace Hospital_Management_System
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(62, 21);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 29);
+            this.label5.Size = new System.Drawing.Size(143, 36);
             this.label5.TabIndex = 0;
             this.label5.Text = "MediCare";
             // 
@@ -194,7 +194,7 @@ namespace Hospital_Management_System
             this.panel1.Controls.Add(this.txtAge);
             this.panel1.Controls.Add(this.txtCondition);
             this.panel1.Controls.Add(this.txtContact);
-            this.panel1.Controls.Add(this.cmbGender);
+            this.panel1.Controls.Add(this.comboBoxGender);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(398, 135);
             this.panel1.Name = "panel1";
@@ -216,24 +216,13 @@ namespace Hospital_Management_System
             this.txtCondition1.Text = " ";
             this.txtCondition1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // txtName
-            // 
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
-            this.txtName.Location = new System.Drawing.Point(31, 140);
-            this.txtName.MaximumSize = new System.Drawing.Size(650, 60);
-            this.txtName.MinimumSize = new System.Drawing.Size(2, 50);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(645, 50);
-            this.txtName.TabIndex = 14;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(26, 391);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 20);
+            this.label4.Size = new System.Drawing.Size(138, 25);
             this.label4.TabIndex = 13;
             this.label4.Text = " Specialization";
             // 
@@ -244,7 +233,7 @@ namespace Hospital_Management_System
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
             this.label2.Location = new System.Drawing.Point(257, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(177, 26);
+            this.label2.Size = new System.Drawing.Size(223, 32);
             this.label2.TabIndex = 12;
             this.label2.Text = "Doctor Records";
             // 
@@ -254,7 +243,7 @@ namespace Hospital_Management_System
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(31, 287);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 20);
+            this.label1.Size = new System.Drawing.Size(154, 25);
             this.label1.TabIndex = 11;
             this.label1.Text = "Contact Number";
             // 
@@ -274,7 +263,7 @@ namespace Hospital_Management_System
             this.FullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FullName.Location = new System.Drawing.Point(26, 100);
             this.FullName.Name = "FullName";
-            this.FullName.Size = new System.Drawing.Size(80, 20);
+            this.FullName.Size = new System.Drawing.Size(100, 25);
             this.FullName.TabIndex = 0;
             this.FullName.Text = "Full Name";
             // 
@@ -283,7 +272,7 @@ namespace Hospital_Management_System
             this.Gender.AutoSize = true;
             this.Gender.Location = new System.Drawing.Point(371, 195);
             this.Gender.Name = "Gender";
-            this.Gender.Size = new System.Drawing.Size(63, 20);
+            this.Gender.Size = new System.Drawing.Size(77, 25);
             this.Gender.TabIndex = 10;
             this.Gender.Text = "Gender";
             // 
@@ -293,7 +282,7 @@ namespace Hospital_Management_System
             this.Age.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Age.Location = new System.Drawing.Point(31, 195);
             this.Age.Name = "Age";
-            this.Age.Size = new System.Drawing.Size(38, 20);
+            this.Age.Size = new System.Drawing.Size(48, 25);
             this.Age.TabIndex = 9;
             this.Age.Text = "Age";
             // 
@@ -317,7 +306,7 @@ namespace Hospital_Management_System
             this.txtCondition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCondition.Location = new System.Drawing.Point(31, 433);
             this.txtCondition.Name = "txtCondition";
-            this.txtCondition.Size = new System.Drawing.Size(0, 23);
+            this.txtCondition.Size = new System.Drawing.Size(0, 27);
             this.txtCondition.TabIndex = 6;
             // 
             // txtContact
@@ -332,39 +321,39 @@ namespace Hospital_Management_System
             this.txtContact.Size = new System.Drawing.Size(645, 40);
             this.txtContact.TabIndex = 5;
             // 
-            // cmbGender
+            // comboBoxGender
             // 
-            this.cmbGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbGender.FormattingEnabled = true;
-            this.cmbGender.ItemHeight = 30;
-            this.cmbGender.Location = new System.Drawing.Point(376, 235);
-            this.cmbGender.MaximumSize = new System.Drawing.Size(300, 0);
-            this.cmbGender.MinimumSize = new System.Drawing.Size(250, 0);
-            this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(300, 36);
-            this.cmbGender.TabIndex = 4;
+            this.comboBoxGender.AccessibleName = "comboBoxGender";
+            this.comboBoxGender.DrawMode = System.Windows.Forms.DrawMode.Normal;
+            this.comboBoxGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxGender.FormattingEnabled = true;
+            this.comboBoxGender.ItemHeight = 30;
+            this.comboBoxGender.Location = new System.Drawing.Point(376, 235);
+            this.comboBoxGender.MaximumSize = new System.Drawing.Size(300, 0);
+            this.comboBoxGender.MinimumSize = new System.Drawing.Size(250, 0);
+            this.comboBoxGender.Name = "comboBoxGender";
+            this.comboBoxGender.Size = new System.Drawing.Size(300, 36);
+            this.comboBoxGender.TabIndex = 4;
             // 
-            // dgvPatients
+            // dataGridView1
             // 
-            this.dgvPatients.AutoGenerateColumns = false;
-            this.dgvPatients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPatients.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPatients.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvPatients.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvPatients.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPatients.DataSource = this.dataSet1BindingSource;
-            this.dgvPatients.EnableHeadersVisualStyles = false;
-            this.dgvPatients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
-            this.dgvPatients.Location = new System.Drawing.Point(320, 923);
-            this.dgvPatients.Name = "dgvPatients";
-            this.dgvPatients.RowHeadersVisible = false;
-            this.dgvPatients.RowHeadersWidth = 51;
-            this.dgvPatients.RowTemplate.Height = 40;
-            this.dgvPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPatients.Size = new System.Drawing.Size(858, 444);
-            this.dgvPatients.TabIndex = 20;
+            this.dataGridView1.AutoGenerateColumns = true;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
+            this.dataGridView1.Location = new System.Drawing.Point(320, 923);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 40;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(858, 444);
+            this.dataGridView1.TabIndex = 20;
             // 
             // dataSet1BindingSource
             // 
@@ -376,13 +365,24 @@ namespace Hospital_Management_System
             this.dataSet1.DataSetName = "DataSet1";
             this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // txtName
+            // 
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
+            this.txtName.Location = new System.Drawing.Point(31, 140);
+            this.txtName.MaximumSize = new System.Drawing.Size(650, 60);
+            this.txtName.MinimumSize = new System.Drawing.Size(2, 50);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(645, 50);
+            this.txtName.TabIndex = 14;
+            // 
             // DoctorsControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(1224, 1055);
-            this.Controls.Add(this.dgvPatients);
+            this.ClientSize = new System.Drawing.Size(1518, 817);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -394,7 +394,7 @@ namespace Hospital_Management_System
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
@@ -413,7 +413,6 @@ namespace Hospital_Management_System
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -424,10 +423,11 @@ namespace Hospital_Management_System
         private System.Windows.Forms.TextBox txtAge;
         private System.Windows.Forms.TextBox txtCondition;
         private System.Windows.Forms.TextBox txtContact;
-        private System.Windows.Forms.ComboBox cmbGender;
-        private System.Windows.Forms.DataGridView dgvPatients;
+        private System.Windows.Forms.ComboBox comboBoxGender;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource dataSet1BindingSource;
         private DataSet1 dataSet1;
         private System.Windows.Forms.TextBox txtCondition1;
+        private System.Windows.Forms.TextBox txtName;
     }
 }

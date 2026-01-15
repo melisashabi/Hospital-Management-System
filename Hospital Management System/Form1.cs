@@ -1,386 +1,239 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Hospital_Management_System
 {
     public partial class Form1 : Form
     {
+        private List<Patient> sampleData = new List<Patient>
+        {
+            new Patient { Id = 1, Name = "Anna", Age = 30, Gender = "Female", Contact = "+1234567890", Condition = "Flu" },
+            new Patient { Id = 2, Name = "Mark", Age = 45, Gender = "Male", Contact = "+0987654321", Condition = "Cold" },
+            new Patient { Id = 3, Name = "Sarah", Age = 28, Gender = "Female", Contact = "+1122334455", Condition = "Fever" }
+        };
+
         public Form1()
         {
             InitializeComponent();
-            this.AutoScaleMode = AutoScaleMode.None; 
+            this.AutoScaleMode = AutoScaleMode.None;
 
-
-            // Placeholder setup
+            // Placeholders
             SetPlaceholder(txtName, "e.g John Smith");
             SetPlaceholder(txtAge, "00");
             SetPlaceholder(txtContact, "e.g +1234567890");
             SetPlaceholder(txtCondition, "e.g Flu");
             SetPlaceholder(txtSearchbar2, "Search records...");
+
+            // ---------------- Gender Dropdown Setup ----------------
+            cmbGender.DropDownStyle = ComboBoxStyle.DropDownList; // user cannot type
+            cmbGender.Items.Clear();                               // remove old items
+            cmbGender.Items.AddRange(new string[]
+            {
+        "Male",
+        "Female",
+        "Other",
+        "Prefer not to say"
+            });
+            cmbGender.SelectedIndex = -1; // no default selection
+
+            // Optional: handle selection change
+           cmbGender.SelectedIndexChanged += cmbGender_SelectedIndexChanged;
         }
 
-        // ---------- Placeholder helper ----------
-        private void SetPlaceholder(TextBox txt, string placeholder)
-        {
-            txt.Text = placeholder;
-            txt.ForeColor = Color.Gray;
 
-            txt.GotFocus += (s, e) =>
-            {
-                if (txt.Text == placeholder)
-                {
-                    txt.Text = "";
-                    txt.ForeColor = Color.Black;
-                }
-            };
-
-            txt.LostFocus += (s, e) =>
-            {
-                if (string.IsNullOrWhiteSpace(txt.Text))
-                {
-                    txt.Text = placeholder;
-                    txt.ForeColor = Color.Gray;
-                }
-            };
-        }
-
-        // ---------- Doctors button click ----------
+        // --- Empty event handlers for Designer ---
+        private void Age_Click(object sender, EventArgs e) { }
+        private void label1_Click_1(object sender, EventArgs e) { }
+        private void Gender_Click(object sender, EventArgs e) { }
+        private void label1_Click_2(object sender, EventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
+        private void label3_Click(object sender, EventArgs e) { }
+        private void label4_Click_1(object sender, EventArgs e) { }
+        private void label5_Click(object sender, EventArgs e) { }
+        private void label6_Click(object sender, EventArgs e) { }
+        private void panel1_Paint(object sender, PaintEventArgs e) { }
+        private void panel2_Paint_1(object sender, PaintEventArgs e) { }
+        private void panel3_Paint(object sender, PaintEventArgs e) { }
+        private void dgvPatients_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void txtAge_TextChanged(object sender, EventArgs e) { }
+        private void txtContact_TextChanged(object sender, EventArgs e) { }
+        private void txtCondition_TextChanged(object sender, EventArgs e) { }
+        private void txtName_TextChanged(object sender, EventArgs e) { }
+        private void cmbGender_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void btnPatients_Click(object sender, EventArgs e) { } // empty if not needed
         private void BtnDoctors_Click(object sender, EventArgs e)
         {
-            Form doctorsWindow = new Form();
-            doctorsWindow.Text = "Doctors Management";
-            doctorsWindow.StartPosition = FormStartPosition.CenterScreen;
-            doctorsWindow.Size = new Size(1000, 700);
-
-            DoctorsControl doctorsControl = new DoctorsControl();
-            doctorsControl.Dock = DockStyle.Fill;
-
-            doctorsWindow.Controls.Add(doctorsControl);
-            doctorsWindow.Show();
-
+            this.Hide();
+            var doctors = new DoctorsControl();
+            doctors.StartPosition = FormStartPosition.CenterScreen;
+            doctors.ShowDialog();
+            this.Show();
         }
-
         private void BtnAppointments_Click(object sender, EventArgs e)
         {
-
-            AppointmentsControl appointments = new AppointmentsControl();
-            appointments.Show();
+            this.Hide();
+            var appointments = new AppointmentsControl();
+            appointments.StartPosition = FormStartPosition.CenterScreen;
+            appointments.ShowDialog();
+            this.Show();
         }
 
-
-
-        // ---------- Patient saving ----------
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // 🔴 INPUT VALIDATION — GOES HERE (TOP)
-            if (string.IsNullOrWhiteSpace(txtName.Text))
-            {
-                MessageBox.Show("Full Name is required.");
-                return;
-            }
-
-            if (!int.TryParse(txtAge.Text, out int age) || age <= 0)
-            {
-                MessageBox.Show("Please enter a valid age.");
-                return;
-            }
-
-            if (cmbGender.SelectedIndex == -1)
-            {
-                MessageBox.Show("Please select a gender.");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtContact.Text) || !txtContact.Text.All(char.IsDigit))
-            {
-                MessageBox.Show("Please enter a valid contact number.");
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(txtCondition.Text))
-            {
-                MessageBox.Show("Condition is required.");
-                return;
-            }
-
-
-            try
-            {
-                string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
-                using (SqlConnection conn = new SqlConnection(connString))
-                {
-                    string query = "INSERT INTO Patients (Name, Age, Gender, Contact, Condition) VALUES (@Name, @Age, @Gender, @Contact, @Condition)";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-
-                    cmd.Parameters.AddWithValue("@Name", txtName.Text);
-                    cmd.Parameters.AddWithValue("@Age", int.Parse(txtAge.Text));
-                    cmd.Parameters.AddWithValue("@Gender", cmbGender.Text);
-                    cmd.Parameters.AddWithValue("@Contact", txtContact.Text);
-                    cmd.Parameters.AddWithValue("@Condition", txtCondition.Text);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Patient Saved Successfully!");
-                    LoadPatients();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
-        // ---------- Form load ----------
         private void Form1_Load(object sender, EventArgs e)
         {
-            try
-            {
-                string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    MessageBox.Show("Connection to SQL Server successful!");
-                }
-                LoadPatients();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show("Connection Failed: " + ex.Message);
-            }
-            
+            LoadPatients();
         }
 
-        private void panel2_Paint_1(object sender, PaintEventArgs e)
-        {
-            
-        }
-
-        private void cmbGender_SelectedIndexChanged(object sender, EventArgs e) { }
-
-        private void txtAge_TextChanged(object sender, EventArgs e) { }
-
-        private void txtCondition_TextChanged(object sender, EventArgs e) { }
-
-        private void txtContact_TextChanged(object sender, EventArgs e) { }
-
-        private void label1_Click(object sender, EventArgs e) { }
-
-        private void label1_Click_1(object sender, EventArgs e) { }
-
-        private void label1_Click_2(object sender, EventArgs e) { }
-
-        private void label2_Click(object sender, EventArgs e) { }
-
-        private void label4_Click_1(object sender, EventArgs e) { }
-
-        private void Gender_Click(object sender, EventArgs e) { }
-
-        private void Age_Click(object sender, EventArgs e) { }
-
-        private void panel1_Paint(object sender, PaintEventArgs e) { }
-
-        private void panel2_Paint(object sender, PaintEventArgs e) { }
-
-        private void dgvPatients_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPatients_Click(object sender, EventArgs e)
-        {
-            // Reset layout safely
-            panel1.Visible = false;
-            panel1.Visible = true;
-
-            panel1.Dock = DockStyle.Fill;
-            panel1.BringToFront();
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void txtSearchbar2_TextChanged(object sender, EventArgs e)
-        {
-            string searchText = txtSearchbar2.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(searchText))
-            {
-                LoadPatients(); // show all patients again
-            }
-            else
-            {
-                LoadPatientsFiltered(searchText); // filter
-            }
-        }
-
-        private void txtName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private void LoadPatients()
         {
             try
             {
-                dgvPatients.DataSource = null;
-                dgvPatients.Rows.Clear();
-                dgvPatients.Columns.Clear();
-
                 string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
-                    string query = "SELECT Name, Age, Gender, Contact, Condition FROM Patients";
-                    SqlCommand cmd = new SqlCommand(query, conn);
-
-                    conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    // Define columns
-                    dgvPatients.Columns.Add("Name", "Full Name");
-                    dgvPatients.Columns.Add("Age", "Age");
-                    dgvPatients.Columns.Add("Gender", "Gender");
-                    dgvPatients.Columns.Add("Contact", "Contact Number");
-                    dgvPatients.Columns.Add("Condition", "Condition");
-
-                    while (reader.Read())
-                    {
-                        dgvPatients.Rows.Add(
-                            reader["Name"].ToString(),
-                            reader["Age"].ToString(),
-                            reader["Gender"].ToString(),
-                            reader["Contact"].ToString(),
-                            reader["Condition"].ToString()
-                        );
-                    }
-
-                    dgvPatients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    string query = @"SELECT PatientId AS Id, FullName AS Name, Age, Gender, ContactNumber AS Contact, MedicalCondition AS Condition 
+                                     FROM Patients";
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                    adapter.Fill(dt);
+                    dgvPatients.DataSource = dt;
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Failed to load patients: " + ex.Message);
+                dgvPatients.DataSource = sampleData;
             }
+
+            FormatDataGridView();
         }
 
-        private void LoadPatientsFiltered(string searchText)
+        private void SavePatient()
         {
-            try
+            if (string.IsNullOrWhiteSpace(txtName.Text) || txtName.Text == "e.g John Smith")
             {
-                dgvPatients.DataSource = null;
-                dgvPatients.Rows.Clear();
-                dgvPatients.Columns.Clear();
-
-                string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
-                using (SqlConnection conn = new SqlConnection(connString))
-                {
-                    string query = @"
-                SELECT Name, Age, Gender, Contact, Condition
-                FROM Patients
-                WHERE 
-                    Name LIKE @search OR
-                    Gender LIKE @search OR
-                    Contact LIKE @search OR
-                    Condition LIKE @search
-            ";
-
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@search", "%" + searchText + "%");
-
-                    conn.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    // Columns
-                    dgvPatients.Columns.Add("Name", "Full Name");
-                    dgvPatients.Columns.Add("Age", "Age");
-                    dgvPatients.Columns.Add("Gender", "Gender");
-                    dgvPatients.Columns.Add("Contact", "Contact Number");
-                    dgvPatients.Columns.Add("Condition", "Condition");
-
-                    while (reader.Read())
-                    {
-                        dgvPatients.Rows.Add(
-                            reader["Name"].ToString(),
-                            reader["Age"].ToString(),
-                            reader["Gender"].ToString(),
-                            reader["Contact"].ToString(),
-                            reader["Condition"].ToString()
-                        );
-                    }
-
-                    dgvPatients.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Search failed: " + ex.Message);
-            }
-        }
-            
-
-        private void btnDelete_Click_1(object sender, EventArgs e)
-        {
-            if (dgvPatients.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Please select a patient to delete.");
-                return;
+                MessageBox.Show("Please enter patient name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtName.Focus(); return;
             }
 
-            // Get contact number from selected row
-            string contact = dgvPatients.SelectedRows[0].Cells["Contact"].Value.ToString();
+            if (!int.TryParse(txtAge.Text, out int age) || age <= 0 || age > 130)
+            {
+                MessageBox.Show("Please enter a valid age (1-130).", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtAge.Focus(); return;
+            }
 
-            DialogResult confirm = MessageBox.Show(
-                "Are you sure you want to delete this patient?",
-                "Confirm Delete",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
+            if (cmbGender.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please select gender.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbGender.Focus(); return;
+            }
 
-            if (confirm != DialogResult.Yes)
-                return;
+            if (string.IsNullOrWhiteSpace(txtContact.Text) || txtContact.Text == "e.g +1234567890")
+            {
+                MessageBox.Show("Please enter contact number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtContact.Focus(); return;
+            }
 
             try
             {
                 string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-
                 using (SqlConnection conn = new SqlConnection(connString))
                 {
-                    string query = "DELETE FROM Patients WHERE Contact = @Contact";
+                    string query = @"INSERT INTO Patients (FullName, Age, Gender, ContactNumber, MedicalCondition)
+                                     VALUES (@FullName, @Age, @Gender, @ContactNumber, @MedicalCondition)";
                     SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Contact", contact);
-
+                    cmd.Parameters.AddWithValue("@FullName", txtName.Text);
+                    cmd.Parameters.AddWithValue("@Age", age);
+                    cmd.Parameters.AddWithValue("@Gender", cmbGender.SelectedItem.ToString());
+                    cmd.Parameters.AddWithValue("@ContactNumber", txtContact.Text);
+                    cmd.Parameters.AddWithValue("@MedicalCondition", txtCondition.Text == "e.g Flu" ? "" : txtCondition.Text);
                     conn.Open();
                     cmd.ExecuteNonQuery();
                 }
 
-                MessageBox.Show("Patient deleted successfully.");
-                LoadPatients(); // refresh grid
+                MessageBox.Show("Patient saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearForm();
+                LoadPatients();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Delete failed: " + ex.Message);
+                MessageBox.Show($"Error saving patient: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e) => SavePatient();
+
+        private void txtSearchbar2_TextChanged(object sender, EventArgs e)
+        {
+            string searchTerm = txtSearchbar2.Text.Trim();
+            if (string.IsNullOrWhiteSpace(searchTerm) || searchTerm == "Search records...")
+            {
+                LoadPatients(); return;
+            }
+
+            try
+            {
+                string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                using (SqlConnection conn = new SqlConnection(connString))
+                {
+                    string query = @"SELECT PatientId AS Id, FullName AS Name, Age, Gender, ContactNumber AS Contact, MedicalCondition AS Condition 
+                                     FROM Patients
+                                     WHERE FullName LIKE @Search OR ContactNumber LIKE @Search OR MedicalCondition LIKE @Search";
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                    adapter.SelectCommand.Parameters.AddWithValue("@Search", $"%{searchTerm}%");
+                    adapter.Fill(dt);
+                    dgvPatients.DataSource = dt;
+                }
+
+                FormatDataGridView();
+            }
+            catch { }
+        }
+
+        private void SetPlaceholder(TextBox txt, string placeholder)
+        {
+            if (txt == null) return;
+            txt.Text = placeholder;
+            txt.ForeColor = Color.Gray;
+
+            txt.GotFocus += (s, e) => { if (txt.Text == placeholder) { txt.Text = ""; txt.ForeColor = Color.Black; } };
+            txt.LostFocus += (s, e) => { if (string.IsNullOrWhiteSpace(txt.Text)) { txt.Text = placeholder; txt.ForeColor = Color.Gray; } };
+        }
+
+        private void ClearForm()
+        {
+            txtName.Text = "e.g John Smith"; txtName.ForeColor = Color.Gray;
+            txtAge.Text = "00"; txtAge.ForeColor = Color.Gray;
+            txtContact.Text = "e.g +1234567890"; txtContact.ForeColor = Color.Gray;
+            txtCondition.Text = "e.g Flu"; txtCondition.ForeColor = Color.Gray;
+            cmbGender.SelectedIndex = -1;
+        }
+
+        private void FormatDataGridView()
+        {
+            if (dgvPatients.Columns.Count == 0) return;
+
+            dgvPatients.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            if (dgvPatients.Columns.Contains("Id")) dgvPatients.Columns["Id"].HeaderText = "ID";
+            if (dgvPatients.Columns.Contains("Name")) dgvPatients.Columns["Name"].HeaderText = "Patient Name";
+            if (dgvPatients.Columns.Contains("Age")) dgvPatients.Columns["Age"].HeaderText = "Age";
+            if (dgvPatients.Columns.Contains("Gender")) dgvPatients.Columns["Gender"].HeaderText = "Gender";
+            if (dgvPatients.Columns.Contains("Contact")) dgvPatients.Columns["Contact"].HeaderText = "Contact Number";
+            if (dgvPatients.Columns.Contains("Condition")) dgvPatients.Columns["Condition"].HeaderText = "Medical Condition";
         }
     }
 
+    public class Patient
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public string Gender { get; set; }
+        public string Contact { get; set; }
+        public string Condition { get; set; }
     }
+}
