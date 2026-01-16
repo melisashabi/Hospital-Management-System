@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appointments.cs" />
     <Compile Include="AppointmentsControl.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +78,7 @@
     <Compile Include="DoctorsControl.Designer.cs">
       <DependentUpon>DoctorsControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseHelper.cs" />
     <EmbeddedResource Include="AppointmentsControl.resx">
       <DependentUpon>AppointmentsControl.cs</DependentUpon>
     </EmbeddedResource>

@@ -12,8 +12,8 @@ namespace Hospital_Management_System
         public Form1()
         {
             InitializeComponent();
-            this.Load += Form1_Load;
-   
+            this.AutoScaleMode = AutoScaleMode.None; 
+
 
             // Placeholder setup
             SetPlaceholder(txtName, "e.g John Smith");
@@ -21,6 +21,12 @@ namespace Hospital_Management_System
             SetPlaceholder(txtContact, "e.g +1234567890");
             SetPlaceholder(txtCondition, "e.g Flu");
             SetPlaceholder(txtSearchbar2, "Search records...");
+
+            // ---------- Gender dropdown ----------
+            comboBoxGender.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxGender.Items.Clear();
+            comboBoxGender.Items.AddRange(new string[] { "Male", "Female", "Other", "Prefer not to say" });
+            comboBoxGender.SelectedIndex = -1; // start with nothing selected
         }
 
         // ---------- Placeholder helper ----------
@@ -57,8 +63,6 @@ namespace Hospital_Management_System
             doctorsWindow.Size = new Size(1000, 700);
 
             DoctorsControl doctorsControl = new DoctorsControl();
-            doctorsControl.TopLevel = false;   // 🔥 THIS LINE FIXES IT
-            doctorsControl.FormBorderStyle = FormBorderStyle.None;
             doctorsControl.Dock = DockStyle.Fill;
 
             doctorsWindow.Controls.Add(doctorsControl);
@@ -95,7 +99,7 @@ namespace Hospital_Management_System
                 return;
             }
 
-            if (cmbGender.SelectedIndex == 0)
+            if (cmbGender.SelectedIndex == -1)
             {
                 MessageBox.Show("Please select a gender.");
                 return;
@@ -138,7 +142,7 @@ namespace Hospital_Management_System
 
                     cmd.Parameters.AddWithValue("@Name", txtName.Text);
                     cmd.Parameters.AddWithValue("@Age", int.Parse(txtAge.Text));
-                    cmd.Parameters.AddWithValue("@Gender", cmbGender.Text);
+                    cmd.Parameters.AddWithValue("@Gender", comboBoxGender.Text);
                     cmd.Parameters.AddWithValue("@Contact", txtContact.Text);
                     cmd.Parameters.AddWithValue("@Condition", txtCondition.Text);
 
@@ -427,4 +431,4 @@ namespace Hospital_Management_System
         }
     }
 
-}
+    }
