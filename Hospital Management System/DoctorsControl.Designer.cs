@@ -43,12 +43,13 @@ namespace Hospital_Management_System
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDeleteDoctor = new System.Windows.Forms.Button();
             this.txtCondition1 = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.FullName = new System.Windows.Forms.Label();
             this.Gender = new System.Windows.Forms.Label();
             this.Age = new System.Windows.Forms.Label();
@@ -56,13 +57,13 @@ namespace Hospital_Management_System
             this.txtCondition = new System.Windows.Forms.TextBox();
             this.txtContact = new System.Windows.Forms.TextBox();
             this.cmbGender = new System.Windows.Forms.ComboBox();
-            this.dgvPatients = new System.Windows.Forms.DataGridView();
+            this.dgvDoctors = new System.Windows.Forms.DataGridView();
             this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet1 = new Hospital_Management_System.DataSet1();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
@@ -182,12 +183,13 @@ namespace Hospital_Management_System
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnDeleteDoctor);
             this.panel1.Controls.Add(this.txtCondition1);
             this.panel1.Controls.Add(this.txtName);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnRegister);
             this.panel1.Controls.Add(this.FullName);
             this.panel1.Controls.Add(this.Gender);
             this.panel1.Controls.Add(this.Age);
@@ -201,6 +203,17 @@ namespace Hospital_Management_System
             this.panel1.Size = new System.Drawing.Size(707, 741);
             this.panel1.TabIndex = 17;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnDeleteDoctor
+            // 
+            this.btnDeleteDoctor.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDeleteDoctor.Location = new System.Drawing.Point(30, 672);
+            this.btnDeleteDoctor.Name = "btnDeleteDoctor";
+            this.btnDeleteDoctor.Size = new System.Drawing.Size(649, 59);
+            this.btnDeleteDoctor.TabIndex = 16;
+            this.btnDeleteDoctor.Text = "Delete";
+            this.btnDeleteDoctor.UseVisualStyleBackColor = false;
+            this.btnDeleteDoctor.Click += new System.EventHandler(this.btnDeleteDoctor_Click);
             // 
             // txtCondition1
             // 
@@ -258,15 +271,16 @@ namespace Hospital_Management_System
             this.label1.TabIndex = 11;
             this.label1.Text = "Contact Number";
             // 
-            // button1
+            // btnRegister
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
-            this.button1.Location = new System.Drawing.Point(31, 607);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(649, 59);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Register";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
+            this.btnRegister.Location = new System.Drawing.Point(31, 607);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(649, 59);
+            this.btnRegister.TabIndex = 1;
+            this.btnRegister.Text = "Register";
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // FullName
             // 
@@ -345,26 +359,24 @@ namespace Hospital_Management_System
             this.cmbGender.Size = new System.Drawing.Size(300, 36);
             this.cmbGender.TabIndex = 4;
             // 
-            // dgvPatients
+            // dgvDoctors
             // 
-            this.dgvPatients.AutoGenerateColumns = false;
-            this.dgvPatients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPatients.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPatients.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvPatients.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvPatients.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPatients.DataSource = this.dataSet1BindingSource;
-            this.dgvPatients.EnableHeadersVisualStyles = false;
-            this.dgvPatients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
-            this.dgvPatients.Location = new System.Drawing.Point(320, 923);
-            this.dgvPatients.Name = "dgvPatients";
-            this.dgvPatients.RowHeadersVisible = false;
-            this.dgvPatients.RowHeadersWidth = 51;
-            this.dgvPatients.RowTemplate.Height = 40;
-            this.dgvPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPatients.Size = new System.Drawing.Size(858, 444);
-            this.dgvPatients.TabIndex = 20;
+            this.dgvDoctors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDoctors.BackgroundColor = System.Drawing.Color.White;
+            this.dgvDoctors.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDoctors.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvDoctors.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvDoctors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDoctors.EnableHeadersVisualStyles = false;
+            this.dgvDoctors.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
+            this.dgvDoctors.Location = new System.Drawing.Point(320, 923);
+            this.dgvDoctors.Name = "dgvDoctors";
+            this.dgvDoctors.RowHeadersVisible = false;
+            this.dgvDoctors.RowHeadersWidth = 51;
+            this.dgvDoctors.RowTemplate.Height = 40;
+            this.dgvDoctors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDoctors.Size = new System.Drawing.Size(858, 444);
+            this.dgvDoctors.TabIndex = 20;
             // 
             // dataSet1BindingSource
             // 
@@ -382,7 +394,7 @@ namespace Hospital_Management_System
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
             this.ClientSize = new System.Drawing.Size(1224, 1055);
-            this.Controls.Add(this.dgvPatients);
+            this.Controls.Add(this.dgvDoctors);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -394,7 +406,7 @@ namespace Hospital_Management_System
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
@@ -417,7 +429,7 @@ namespace Hospital_Management_System
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label FullName;
         private System.Windows.Forms.Label Gender;
         private System.Windows.Forms.Label Age;
@@ -425,9 +437,10 @@ namespace Hospital_Management_System
         private System.Windows.Forms.TextBox txtCondition;
         private System.Windows.Forms.TextBox txtContact;
         private System.Windows.Forms.ComboBox cmbGender;
-        private System.Windows.Forms.DataGridView dgvPatients;
+        private System.Windows.Forms.DataGridView dgvDoctors;
         private System.Windows.Forms.BindingSource dataSet1BindingSource;
         private DataSet1 dataSet1;
         private System.Windows.Forms.TextBox txtCondition1;
+        private System.Windows.Forms.Button btnDeleteDoctor;
     }
 }

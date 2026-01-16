@@ -14,10 +14,27 @@ namespace Hospital_Management_System
 {
     public partial class DoctorsControl : Form
     {
+        private BindingList<Doctor> doctors = new BindingList<Doctor>();
         public DoctorsControl()
         {
             InitializeComponent();
             this.AutoScaleMode = AutoScaleMode.None;
+
+            dgvDoctors.DataSource = doctors;
+
+            cmbGender.DataSource = null;
+
+            cmbGender.Items.Clear();
+            cmbGender.Items.Add("Male");
+            cmbGender.Items.Add("Female");
+
+            cmbGender.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbGender.FlatStyle = FlatStyle.Standard;
+
+            // 🔥 THIS IS THE IMPORTANT PART
+            cmbGender.DrawMode = DrawMode.Normal;
+
+            cmbGender.SelectedIndex = -1;
 
 
             // Placeholder setup
@@ -170,6 +187,71 @@ namespace Hospital_Management_System
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDeleteDoctor_Click(object sender, EventArgs e)
+        {
+            if (dgvDoctors.CurrentRow == null)
+            {
+                MessageBox.Show("Please select a doctor to delete.");
+                return;
+            }
+
+            var confirm = MessageBox.Show(
+                "Delete this doctor?",
+                "Confirm delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm != DialogResult.Yes)
+                return;
+
+            doctors.RemoveAt(dgvDoctors.CurrentRow.Index);
+
+            MessageBox.Show("Doctor deleted successfully.");
+        }
+
+        public class Doctor
+        {
+            public string FullName { get; set; }
+            public int Age { get; set; }
+            public string Gender { get; set; }
+            public string ContactNumber { get; set; }
+            public string Specialization { get; set; }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtName.Text) ||
+       string.IsNullOrWhiteSpace(txtAge.Text) ||
+       cmbGender.SelectedIndex == -1 ||
+       string.IsNullOrWhiteSpace(txtContact.Text) ||
+       string.IsNullOrWhiteSpace(txtCondition1.Text))
+            {
+                MessageBox.Show("Please fill all fields.");
+                return;
+            }
+
+            var doctor = new Doctor
+            {
+                FullName = txtName.Text,
+                Age = int.Parse(txtAge.Text),
+                Gender = cmbGender.SelectedItem.ToString(),
+                ContactNumber = txtContact.Text,
+                Specialization = txtCondition.Text
+            };
+
+            doctors.Add(doctor);
+
+            MessageBox.Show("Doctor registered successfully.");
+
+            // Optional: clear fields after add
+            txtName.Clear();
+            txtAge.Clear();
+            cmbGender.SelectedIndex = -1;
+            txtContact.Clear();
+            txtCondition.Clear();
         }
     }
 }

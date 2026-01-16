@@ -7,6 +7,7 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
@@ -28,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnAppointments = new System.Windows.Forms.Button();
             this.btnDoctors = new System.Windows.Forms.Button();
@@ -35,6 +37,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDeleteAppointment = new System.Windows.Forms.Button();
             this.txtName1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -42,19 +45,25 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.FullName = new System.Windows.Forms.Label();
             this.Gender = new System.Windows.Forms.Label();
             this.Age = new System.Windows.Forms.Label();
-            this.txtAge = new System.Windows.Forms.TextBox();
+            this.txtDate = new System.Windows.Forms.TextBox();
             this.txtContact = new System.Windows.Forms.TextBox();
-            this.cmbGender = new System.Windows.Forms.ComboBox();
+            this.comboBoxGender = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtSearchbar2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataSet1BindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet1 = new Hospital_Management_System.DataSet1();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -144,6 +153,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnDeleteAppointment);
             this.panel1.Controls.Add(this.txtName1);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.txtName);
@@ -151,13 +161,13 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnRegister);
             this.panel1.Controls.Add(this.FullName);
             this.panel1.Controls.Add(this.Gender);
             this.panel1.Controls.Add(this.Age);
-            this.panel1.Controls.Add(this.txtAge);
+            this.panel1.Controls.Add(this.txtDate);
             this.panel1.Controls.Add(this.txtContact);
-            this.panel1.Controls.Add(this.cmbGender);
+            this.panel1.Controls.Add(this.comboBoxGender);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(398, 135);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
@@ -165,6 +175,17 @@
             this.panel1.Size = new System.Drawing.Size(707, 747);
             this.panel1.TabIndex = 17;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnDeleteAppointment
+            // 
+            this.btnDeleteAppointment.BackColor = System.Drawing.Color.IndianRed;
+            this.btnDeleteAppointment.Location = new System.Drawing.Point(26, 677);
+            this.btnDeleteAppointment.Name = "btnDeleteAppointment";
+            this.btnDeleteAppointment.Size = new System.Drawing.Size(649, 59);
+            this.btnDeleteAppointment.TabIndex = 19;
+            this.btnDeleteAppointment.Text = "Delete";
+            this.btnDeleteAppointment.UseVisualStyleBackColor = false;
+            this.btnDeleteAppointment.Click += new System.EventHandler(this.btnDeleteAppointment_Click);
             // 
             // txtName1
             // 
@@ -195,8 +216,6 @@
             this.txtName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
             this.txtName.Location = new System.Drawing.Point(22, 129);
             this.txtName.Margin = new System.Windows.Forms.Padding(2);
-            this.txtName.MaximumSize = new System.Drawing.Size(645, 60);
-            this.txtName.MinimumSize = new System.Drawing.Size(100, 50);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(645, 26);
             this.txtName.TabIndex = 16;
@@ -204,13 +223,11 @@
             // txtCondition
             // 
             this.txtCondition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCondition.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCondition.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCondition.Location = new System.Drawing.Point(26, 542);
             this.txtCondition.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCondition.MaximumSize = new System.Drawing.Size(645, 40);
-            this.txtCondition.MinimumSize = new System.Drawing.Size(100, 50);
             this.txtCondition.Name = "txtCondition";
-            this.txtCondition.Size = new System.Drawing.Size(645, 23);
+            this.txtCondition.Size = new System.Drawing.Size(645, 26);
             this.txtCondition.TabIndex = 15;
             this.txtCondition.TextChanged += new System.EventHandler(this.txtCondition_TextChanged);
             // 
@@ -248,16 +265,18 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Contact Number";
             // 
-            // button1
+            // btnRegister
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
-            this.button1.Location = new System.Drawing.Point(24, 636);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(649, 59);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Register";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnRegister.AccessibleName = "btnRegister";
+            this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
+            this.btnRegister.Location = new System.Drawing.Point(26, 613);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(649, 59);
+            this.btnRegister.TabIndex = 1;
+            this.btnRegister.Text = "Register";
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // FullName
             // 
@@ -291,49 +310,47 @@
             this.Age.TabIndex = 9;
             this.Age.Text = "Date";
             // 
-            // txtAge
+            // txtDate
             // 
-            this.txtAge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAge.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
-            this.txtAge.Location = new System.Drawing.Point(22, 341);
-            this.txtAge.Margin = new System.Windows.Forms.Padding(2);
-            this.txtAge.MaximumSize = new System.Drawing.Size(326, 35);
-            this.txtAge.MaxLength = 2;
-            this.txtAge.MinimumSize = new System.Drawing.Size(188, 35);
-            this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(300, 26);
-            this.txtAge.TabIndex = 3;
+            this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
+            this.txtDate.Location = new System.Drawing.Point(22, 341);
+            this.txtDate.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDate.MaximumSize = new System.Drawing.Size(326, 35);
+            this.txtDate.MaxLength = 10;
+            this.txtDate.MinimumSize = new System.Drawing.Size(188, 35);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(300, 26);
+            this.txtDate.TabIndex = 3;
             // 
             // txtContact
             // 
             this.txtContact.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContact.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.txtContact.Location = new System.Drawing.Point(26, 437);
             this.txtContact.Margin = new System.Windows.Forms.Padding(2);
-            this.txtContact.MaximumSize = new System.Drawing.Size(645, 40);
-            this.txtContact.MinimumSize = new System.Drawing.Size(308, 40);
             this.txtContact.Name = "txtContact";
-            this.txtContact.Size = new System.Drawing.Size(645, 23);
+            this.txtContact.Size = new System.Drawing.Size(645, 26);
             this.txtContact.TabIndex = 5;
             // 
-            // cmbGender
+            // comboBoxGender
             // 
-            this.cmbGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbGender.DropDownHeight = 103;
-            this.cmbGender.DropDownWidth = 300;
-            this.cmbGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbGender.FormattingEnabled = true;
-            this.cmbGender.IntegralHeight = false;
-            this.cmbGender.ItemHeight = 30;
-            this.cmbGender.Location = new System.Drawing.Point(367, 340);
-            this.cmbGender.Margin = new System.Windows.Forms.Padding(2);
-            this.cmbGender.MaximumSize = new System.Drawing.Size(300, 0);
-            this.cmbGender.MinimumSize = new System.Drawing.Size(188, 0);
-            this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(300, 36);
-            this.cmbGender.TabIndex = 4;
+            this.comboBoxGender.AccessibleName = "comboBoxGender";
+            this.comboBoxGender.DropDownHeight = 103;
+            this.comboBoxGender.DropDownWidth = 300;
+            this.comboBoxGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxGender.FormattingEnabled = true;
+            this.comboBoxGender.IntegralHeight = false;
+            this.comboBoxGender.ItemHeight = 20;
+            this.comboBoxGender.Location = new System.Drawing.Point(367, 340);
+            this.comboBoxGender.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxGender.MaximumSize = new System.Drawing.Size(300, 0);
+            this.comboBoxGender.MinimumSize = new System.Drawing.Size(188, 0);
+            this.comboBoxGender.Name = "comboBoxGender";
+            this.comboBoxGender.Size = new System.Drawing.Size(300, 28);
+            this.comboBoxGender.TabIndex = 4;
             // 
             // panel3
             // 
@@ -368,13 +385,46 @@
             this.label3.Text = "Appointments Management";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AccessibleName = "dataGridView1";
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(232)))), ((int)(((byte)(240)))));
+            this.dataGridView1.Location = new System.Drawing.Point(312, 961);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 40;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(843, 361);
+            this.dataGridView1.TabIndex = 20;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
+            // dataSet1BindingSource
+            // 
+            this.dataSet1BindingSource.DataSource = this.dataSet1;
+            this.dataSet1BindingSource.Position = 0;
+            // 
+            // dataSet1
+            // 
+            this.dataSet1.DataSetName = "DataSet1";
+            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // AppointmentsControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(245)))), ((int)(((byte)(249)))));
-            this.ClientSize = new System.Drawing.Size(1241, 1072);
+            this.ClientSize = new System.Drawing.Size(1138, 664);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -388,6 +438,9 @@
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -404,11 +457,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Label FullName;
         private System.Windows.Forms.Label Gender;
         private System.Windows.Forms.Label Age;
-        private System.Windows.Forms.TextBox txtAge;
+        private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.TextBox txtContact;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txtSearchbar2;
@@ -417,6 +470,10 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtName1;
-        private System.Windows.Forms.ComboBox cmbGender;
+        private System.Windows.Forms.ComboBox comboBoxGender;
+        private System.Windows.Forms.BindingSource dataSet1BindingSource;
+        private DataSet1 dataSet1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnDeleteAppointment;
     }
 }

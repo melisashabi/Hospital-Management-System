@@ -12,8 +12,8 @@ namespace Hospital_Management_System
         public Form1()
         {
             InitializeComponent();
-            this.AutoScaleMode = AutoScaleMode.None; 
-
+            this.Load += Form1_Load;
+   
 
             // Placeholder setup
             SetPlaceholder(txtName, "e.g John Smith");
@@ -57,12 +57,18 @@ namespace Hospital_Management_System
             doctorsWindow.Size = new Size(1000, 700);
 
             DoctorsControl doctorsControl = new DoctorsControl();
+            doctorsControl.TopLevel = false;   // 🔥 THIS LINE FIXES IT
+            doctorsControl.FormBorderStyle = FormBorderStyle.None;
             doctorsControl.Dock = DockStyle.Fill;
 
             doctorsWindow.Controls.Add(doctorsControl);
+            doctorsControl.Show();              // IMPORTANT
             doctorsWindow.Show();
 
+            this.FindForm()?.Hide();
         }
+
+
 
         private void BtnAppointments_Click(object sender, EventArgs e)
         {
@@ -89,7 +95,7 @@ namespace Hospital_Management_System
                 return;
             }
 
-            if (cmbGender.SelectedIndex == -1)
+            if (cmbGender.SelectedIndex == 0)
             {
                 MessageBox.Show("Please select a gender.");
                 return;
@@ -106,6 +112,19 @@ namespace Hospital_Management_System
                 MessageBox.Show("Condition is required.");
                 return;
             }
+
+            if (txtName.ForeColor == Color.Gray)
+            {
+                MessageBox.Show("Full Name is required.");
+                return;
+            }
+
+            if (txtCondition.ForeColor == Color.Gray)
+            {
+                MessageBox.Show("Condition is required.");
+                return;
+            }
+
 
 
             try
@@ -139,26 +158,51 @@ namespace Hospital_Management_System
         // ---------- Form load ----------
         private void Form1_Load(object sender, EventArgs e)
         {
+            // 🔥 FIX: break data binding
+            cmbGender.DataSource = null;
+
+            cmbGender.Items.Clear();
+            cmbGender.Items.Add("Select gender");
+            cmbGender.Items.Add("Male");
+            cmbGender.Items.Add("Female");
+
+            cmbGender.SelectedIndex = 0;
+
+            cmbGender.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbGender.FlatStyle = FlatStyle.Standard;
+
+            // 🔥 IMPORTANT FIX
+            cmbGender.DrawMode = DrawMode.Normal;
+
+            // dropdown height fix (keep this)
+            cmbGender.IntegralHeight = false;
+            cmbGender.DropDownHeight = 100;
+            
+
+            LoadPatients();
+
+
+
             try
             {
                 string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    MessageBox.Show("Connection to SQL Server successful!");
+                    
                 }
                 LoadPatients();
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Connection Failed: " + ex.Message);
+                
             }
-            
+
         }
 
         private void panel2_Paint_1(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void cmbGender_SelectedIndexChanged(object sender, EventArgs e) { }
@@ -336,7 +380,7 @@ namespace Hospital_Management_System
                 MessageBox.Show("Search failed: " + ex.Message);
             }
         }
-            
+
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
@@ -383,4 +427,4 @@ namespace Hospital_Management_System
         }
     }
 
-    }
+}
